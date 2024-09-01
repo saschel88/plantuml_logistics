@@ -1,0 +1,14 @@
+@startuml
+
+actor "Клиент" as client
+
+participant "Клиентский отдел" as сustomers
+participant "Операционный отдел" as operations 
+participant "Склад" as сomposition
+
+front -> report++: Получение список справок
+report -> db++:  Получение список справок из бд
+db --> report--:  Список справок
+report -> front--: Список справок
+
+@enduml
