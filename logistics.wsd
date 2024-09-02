@@ -1,14 +1,42 @@
 @startuml
 
-actor "Клиент" as client
-
-participant "Клиентский отдел" as сustomers
-participant "Операционный отдел" as operations 
-participant "Склад" as сomposition
-
-front -> report++: Получение список справок
-report -> db++:  Получение список справок из бд
-db --> report--:  Список справок
-report -> front--: Список справок
-
+|client| Клиент
+|marketing| Маркетинговый отдел
+|operation| Операционный отдел
+|composition| Склад
+|client|
+start
+:Выбор услуги;
+|marketing|
+:Анализ запроса;
+|marketing|
+:Создание запроса
+на оценку услуг;
+|operation|
+:Оценка стоимости
+услуг;
+|operation|
+:Формирование
+счета на оплату;
+|client|
+:Подтверждение
+готовности оплатить;
+|operation|
+:Забрать посылку 
+у Клиента;
+|operation|
+:Отправить на склад;
+|composition|
+:Подготовка к отгрузке
+(процедуры внутреннего
+офрмления, в т.ч. QR);
+|composition|
+:Отгрузка;
+|operation|
+:Доставка Клиенту;
+|client|
+:Приемка Заказа;
+|client|
+:Оплата услуг;
+stop
 @enduml
